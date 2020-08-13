@@ -13,3 +13,7 @@ find_library(log-lib log)
 target_link_libraries(native-lib
         PUBLIC ZLIB::ZLIB
         ${log-lib})
+target_compile_options(native-lib PRIVATE
+        "$<$<CONFIG:RELEASE>:-Os>"
+        "$<$<CONFIG:DEBUG>:-Os>"
+        )
